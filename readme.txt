@@ -1,7 +1,8 @@
-
 /**
  *
  * @author praveen_kulkarni
+ * know more at
+ * http://www.spikingneurons.com/projects_subtractive-clustering
  */
 
 #1 check out the files and execute follow instructions
