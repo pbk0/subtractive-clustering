@@ -39,7 +39,7 @@ void populateData(){
 	}
 
 	for(int count=0; count<NUMBEROFPOINTS; count++){
-		allRoutesCoOrdinatesZ[count] = 0.0f;
+		allDataCoOrdinatesZ[count] = 0.0f;
 	}
 
 	int pointFinishedIndex = 0;
@@ -47,8 +47,8 @@ void populateData(){
 	/// 10% random points
 	srand(time(NULL));
 	for(int count=0; count<NUMBEROFPOINTS/10; count++){
-		allRoutesCoOrdinatesX[count] = (float)rand()/(float)RAND_MAX;
-		allRoutesCoOrdinatesY[count] = (float)rand()/(float)RAND_MAX;
+		allDataCoOrdinatesX[count] = (float)rand()/(float)RAND_MAX;
+		allDataCoOrdinatesY[count] = (float)rand()/(float)RAND_MAX;
 		pointFinishedIndex++;
 	}
 
@@ -72,55 +72,55 @@ void populateData(){
 		for(int count1=0; count1<numOfPointsPerCluster; count1++){
 			int index = temp+(count*numOfPointsPerCluster)+count1;
 			if(count1<numOfPointsPerCluster/5){
-				allRoutesCoOrdinatesX[index]=
+				allDataCoOrdinatesX[index]=
 					((float)rand()/(float)RAND_MAX)*(width)+
 					(clusterCenterX[count]-(width*0.5f));
-				allRoutesCoOrdinatesY[index]=
+				allDataCoOrdinatesY[index]=
 					((float)rand()/(float)RAND_MAX)*(width)+
 					(clusterCenterY[count]-(width*0.5f));
 			}else if(count1<numOfPointsPerCluster/4){
 				float temp_width = width*(float)rand()/(float)RAND_MAX;
-				allRoutesCoOrdinatesX[index]=
+				allDataCoOrdinatesX[index]=
 					((float)rand()/(float)RAND_MAX)*(temp_width)+
 					(clusterCenterX[count]-(temp_width*0.5f));
-				allRoutesCoOrdinatesY[index]=
+				allDataCoOrdinatesY[index]=
 					((float)rand()/(float)RAND_MAX)*(temp_width)+
 					(clusterCenterY[count]-(temp_width*0.5f));
 			}else if(count1<numOfPointsPerCluster/3){
 				float temp_width = width*(float)rand()/(float)RAND_MAX;
-				allRoutesCoOrdinatesX[index]=
+				allDataCoOrdinatesX[index]=
 					((float)rand()/(float)RAND_MAX)*(temp_width)+
 					(clusterCenterX[count]-(temp_width*0.5f));
-				allRoutesCoOrdinatesY[index]=
+				allDataCoOrdinatesY[index]=
 					((float)rand()/(float)RAND_MAX)*(temp_width)+
 					(clusterCenterY[count]-(temp_width*0.5f));
 			}else if(count1<numOfPointsPerCluster/2){
 				float temp_width = width*(float)rand()/(float)RAND_MAX;
-				allRoutesCoOrdinatesX[index]=
+				allDataCoOrdinatesX[index]=
 					((float)rand()/(float)RAND_MAX)*(temp_width)+
 					(clusterCenterX[count]-(temp_width*0.5f));
-				allRoutesCoOrdinatesY[index]=
+				allDataCoOrdinatesY[index]=
 					((float)rand()/(float)RAND_MAX)*(temp_width)+
 					(clusterCenterY[count]-(temp_width*0.5f));
 			}else{
 				float temp_width = width*(float)rand()/(float)RAND_MAX;
-				allRoutesCoOrdinatesX[index]=
+				allDataCoOrdinatesX[index]=
 					((float)rand()/(float)RAND_MAX)*(temp_width)+
 					(clusterCenterX[count]-(temp_width*0.5f));
-				allRoutesCoOrdinatesY[index]=
+				allDataCoOrdinatesY[index]=
 					((float)rand()/(float)RAND_MAX)*(temp_width)+
 					(clusterCenterY[count]-(temp_width*0.5f));
 			}
-			if(allRoutesCoOrdinatesX[index]<=0.0f){
-				allRoutesCoOrdinatesX[index]=0.00001f;
-			}else if(allRoutesCoOrdinatesX[index]>=1.0f){
-				allRoutesCoOrdinatesX[index]=0.99999f;
+			if(allDataCoOrdinatesX[index]<=0.0f){
+				allDataCoOrdinatesX[index]=0.00001f;
+			}else if(allDataCoOrdinatesX[index]>=1.0f){
+				allDataCoOrdinatesX[index]=0.99999f;
 			}
 
-			if(allRoutesCoOrdinatesY[index]<=0.0f){
-				allRoutesCoOrdinatesY[index]=0.00001f;
-			}else if(allRoutesCoOrdinatesY[index]>=1.0f){
-				allRoutesCoOrdinatesY[index]=0.99999f;
+			if(allDataCoOrdinatesY[index]<=0.0f){
+				allDataCoOrdinatesY[index]=0.00001f;
+			}else if(allDataCoOrdinatesY[index]>=1.0f){
+				allDataCoOrdinatesY[index]=0.99999f;
 			}
 			pointFinishedIndex++;
 		}
@@ -129,8 +129,8 @@ void populateData(){
 	// fill remaining points
 	srand(time(NULL));
 	for(int count = pointFinishedIndex; count < NUMBEROFPOINTS; count++){
-		allRoutesCoOrdinatesX[count] = (float)rand()/(float)RAND_MAX;
-		allRoutesCoOrdinatesY[count] = (float)rand()/(float)RAND_MAX;
+		allDataCoOrdinatesX[count] = (float)rand()/(float)RAND_MAX;
+		allDataCoOrdinatesY[count] = (float)rand()/(float)RAND_MAX;
 		pointFinishedIndex++;
 	}
 
@@ -139,12 +139,12 @@ void populateData(){
         int i;
 		for (i = 0; i < NUMBEROFPOINTS - 1; i++) {
 		  int j = i + rand() / (RAND_MAX / (NUMBEROFPOINTS - i) + 1);
-		  float tx = allRoutesCoOrdinatesX[j];
-		  float ty = allRoutesCoOrdinatesY[j];
-		  allRoutesCoOrdinatesX[j] = allRoutesCoOrdinatesX[i];
-		  allRoutesCoOrdinatesY[j] = allRoutesCoOrdinatesY[i];
-		  allRoutesCoOrdinatesX[i] = tx;
-		  allRoutesCoOrdinatesY[i] = ty;
+		  float tx = allDataCoOrdinatesX[j];
+		  float ty = allDataCoOrdinatesY[j];
+		  allDataCoOrdinatesX[j] = allDataCoOrdinatesX[i];
+		  allDataCoOrdinatesY[j] = allDataCoOrdinatesY[i];
+		  allDataCoOrdinatesX[i] = tx;
+		  allDataCoOrdinatesY[i] = ty;
 		}
     }
 }
@@ -164,44 +164,44 @@ void modifyPotentialZ(){
 	size_t i,j=0;
 
 	for(i=0;i<NUMBEROFPOINTS;i++){
-		float temp = allRoutesCoOrdinatesZ[i];
-		float tempx = allRoutesCoOrdinatesX[i];
-		float tempy = allRoutesCoOrdinatesY[i];
+		float temp = allDataCoOrdinatesZ[i];
+		float tempx = allDataCoOrdinatesX[i];
+		float tempy = allDataCoOrdinatesY[i];
 		for(j=0;j<NUMBEROFPOINTS;j++){
-			temp += exp(-ALPHA*(pow(tempx-allRoutesCoOrdinatesX[j],2)+pow(tempy-allRoutesCoOrdinatesY[j],2)));
+			temp += exp(-ALPHA*(pow(tempx-allDataCoOrdinatesX[j],2)+pow(tempy-allDataCoOrdinatesY[j],2)));
 		}
-		allRoutesCoOrdinatesZ[i] = temp;
+		allDataCoOrdinatesZ[i] = temp;
 	}
 	
 	//find max and normalize
 	float maxOfAll = -1.0f;
 	for (i=0; i<NUMBEROFPOINTS; i++)
 	{
-		 if (allRoutesCoOrdinatesZ[i]>maxOfAll)
+		 if (allDataCoOrdinatesZ[i]>maxOfAll)
 		 {
-			maxOfAll=allRoutesCoOrdinatesZ[i];
+			maxOfAll=allDataCoOrdinatesZ[i];
 			clusterCenters[0]=i;
 		 }
 	}
 	for (i=0; i<NUMBEROFPOINTS; i++)
 	{
-		allRoutesCoOrdinatesZ[i]/=maxOfAll;
+		allDataCoOrdinatesZ[i]/=maxOfAll;
 	}
 }
 
 // This is used to subtract potential so that you can go for finding next big cluster
 void modifyOuterCirclePotentialZAndEstimateNextClusterCenter(){
 	size_t i=0;
-	float cx = allRoutesCoOrdinatesX[clusterCenters[currentClusterCenterIndex]];
-	float cy = allRoutesCoOrdinatesY[clusterCenters[currentClusterCenterIndex]];
-	float cz = allRoutesCoOrdinatesZ[clusterCenters[currentClusterCenterIndex]];
+	float cx = allDataCoOrdinatesX[clusterCenters[currentClusterCenterIndex]];
+	float cy = allDataCoOrdinatesY[clusterCenters[currentClusterCenterIndex]];
+	float cz = allDataCoOrdinatesZ[clusterCenters[currentClusterCenterIndex]];
 	for(i=0;i<NUMBEROFPOINTS;i++){
-		//float sqrdist = pow(allRoutesCoOrdinatesX[i]-cx,2) + pow(allRoutesCoOrdinatesY[i]-cy,2);
+		//float sqrdist = pow(allDataCoOrdinatesX[i]-cx,2) + pow(allDataCoOrdinatesY[i]-cy,2);
 		//if(pow(OUTERRADIUS,2)>sqrdist){
-		//	allRoutesCoOrdinatesZ[i]=0.0f;
-		//	printf("--%d (%f,%f)<(%f,%f)",i,allRoutesCoOrdinatesX[i],allRoutesCoOrdinatesY[i],cx,cy);
+		//	allDataCoOrdinatesZ[i]=0.0f;
+		//	printf("--%d (%f,%f)<(%f,%f)",i,allDataCoOrdinatesX[i],allDataCoOrdinatesY[i],cx,cy);
 		//}
-		allRoutesCoOrdinatesZ[i]-= cz*exp(-BETA*(pow(allRoutesCoOrdinatesX[i]-cx,2)+pow(allRoutesCoOrdinatesY[i]-cy,2)));
+		allDataCoOrdinatesZ[i]-= cz*exp(-BETA*(pow(allDataCoOrdinatesX[i]-cx,2)+pow(allDataCoOrdinatesY[i]-cy,2)));
 	}
 
 	//find next max
@@ -209,9 +209,9 @@ void modifyOuterCirclePotentialZAndEstimateNextClusterCenter(){
 	if(currentClusterCenterIndex<maxClusters-1){
 		for (i=0; i<NUMBEROFPOINTS; i++)
 		{
-			if (allRoutesCoOrdinatesZ[i]>max)
+			if (allDataCoOrdinatesZ[i]>max)
 			{
-				max=allRoutesCoOrdinatesZ[i];
+				max=allDataCoOrdinatesZ[i];
 				clusterCenters[currentClusterCenterIndex+1]=i;
 			}
 		}
@@ -221,7 +221,7 @@ void modifyOuterCirclePotentialZAndEstimateNextClusterCenter(){
 void printPoints(){
 	printf("/n||||||\n");
 	for(int i=0;i<NUMBEROFPOINTS;i++){
-		printf("index:%d cx:%f cy:%f cz:%f\n",i,allRoutesCoOrdinatesX[i],allRoutesCoOrdinatesY[i],allRoutesCoOrdinatesZ[i]);
+		printf("index:%d cx:%f cy:%f cz:%f\n",i,allDataCoOrdinatesX[i],allDataCoOrdinatesY[i],allDataCoOrdinatesZ[i]);
 	}
 	printf("/n||||||\n");
 }
@@ -256,9 +256,9 @@ void drawClusterBox()
 	glPushMatrix();
 	glBegin(GL_POINTS);	
 	for(int i=0; i<NUMBEROFPOINTS; i++){
-		float z = allRoutesCoOrdinatesZ[i];
+		float z = allDataCoOrdinatesZ[i];
 		glColor3f(z,1.0-z,0.0);
-		glVertex3f(allRoutesCoOrdinatesX[i],allRoutesCoOrdinatesY[i],z);
+		glVertex3f(allDataCoOrdinatesX[i],allDataCoOrdinatesY[i],z);
 	}
 	glEnd();
 	glPopMatrix();
@@ -294,8 +294,8 @@ void display()
 
 		for(int c = 0; c<maxClusters; c++){
 			float cx,cy;
-			cx=allRoutesCoOrdinatesX[clusterCenters[c]];
-			cy=allRoutesCoOrdinatesY[clusterCenters[c]];
+			cx=allDataCoOrdinatesX[clusterCenters[c]];
+			cy=allDataCoOrdinatesY[clusterCenters[c]];
 			if(innerClusterCircleFlag[c]==1){
 				glColor3f(0.6,0.05,0.45);
 				glBegin(GL_LINE_LOOP); 
@@ -446,7 +446,7 @@ void specialKeyboard(int key, int x, int y)
 			}
 
 			if(step==0){
-				printf("\nCluster %d detected at (%f,%f)\n",currentClusterCenterIndex+1,allRoutesCoOrdinatesX[clusterCenters[currentClusterCenterIndex]],allRoutesCoOrdinatesY[clusterCenters[currentClusterCenterIndex]]);
+				printf("\nCluster %d detected at (%f,%f)\n",currentClusterCenterIndex+1,allDataCoOrdinatesX[clusterCenters[currentClusterCenterIndex]],allDataCoOrdinatesY[clusterCenters[currentClusterCenterIndex]]);
 				innerClusterCircleFlag[currentClusterCenterIndex]=1;
 				printf("display inner circle\n");
 			}
