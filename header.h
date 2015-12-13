@@ -18,9 +18,7 @@
 #include <stdlib.h>
 #include <vector>
 
-const static int ROUTELENGTH = 100;
-const static int NUMBEROFROUTES = 50;
-const static int NUMBEROFPOINTS = ROUTELENGTH*NUMBEROFROUTES;
+const static int NUMBEROFPOINTS = 500;
 
 const static int STEP_NUM = 100;
 const static float PARTICLE_SIZE = 1.0f;
@@ -31,9 +29,9 @@ const static float BETA = 4.0f/pow(OUTERRADIUS,2);
 
 const static int NUMOFSEGMENTSTODRAWCIRCLE = 20;
 
-static float allRoutesCoOrdinatesX[NUMBEROFPOINTS];
-static float allRoutesCoOrdinatesY[NUMBEROFPOINTS];
-static float allRoutesCoOrdinatesZ[NUMBEROFPOINTS];
+static float allDataCoOrdinatesX[NUMBEROFPOINTS];
+static float allDataCoOrdinatesY[NUMBEROFPOINTS];
+static float allDataCoOrdinatesZ[NUMBEROFPOINTS];
 
 
 const static int NUMBEROFCLUSTERS = 6;
@@ -44,5 +42,5 @@ static float clusterCenterY[NUMBEROFCLUSTERS];
 
 
 int clusterDisplay(int argc, char *argv[]);
-void populateRoutes();
+void populateData();
 
