@@ -29,8 +29,8 @@ static int outerClusterCircleFlag[maxClusters];
 
 static int numberOfMarkerClusterCircles = 1;
 
-
-void populateRoutes(){
+// method that generates data for demo
+void populateData(){
 
 	for(int count=0; count<maxClusters; count++){
 		clusterCenters[count] = -1;
@@ -149,6 +149,7 @@ void populateRoutes(){
     }
 }
 
+// initialize OpenGL for drawing animation
 bool init()
 {
 	glClearColor(0.93f, 0.93f, 0.93f, 0.0f);
@@ -158,6 +159,7 @@ bool init()
 	return true;
 }
 
+// calculate the potential of a every point based on Gaussian kernel
 void modifyPotentialZ(){
 	size_t i,j=0;
 
@@ -187,6 +189,7 @@ void modifyPotentialZ(){
 	}
 }
 
+// This is used to subtract potential so that you can go for finding next big cluster
 void modifyOuterCirclePotentialZAndEstimateNextClusterCenter(){
 	size_t i=0;
 	float cx = allRoutesCoOrdinatesX[clusterCenters[currentClusterCenterIndex]];
@@ -526,7 +529,7 @@ int clusterDisplay(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	populateRoutes();
+	populateData();
 
 	clusterDisplay(argc, argv);
 
